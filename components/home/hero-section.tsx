@@ -85,7 +85,13 @@ const PuzzlePiece = ({
       >
         <path
           d={piecePaths[position]}
-          className="fill-current text-white/10"
+          className={`fill-current ${
+            position === 'top-left' ? 'text-blue-400/30' :
+            position === 'top-right' ? 'text-purple-400/30' :
+            position === 'bottom-left' ? 'text-emerald-400/30' :
+            position === 'bottom-right' ? 'text-rose-400/30' :
+            'text-amber-400/30' // center piece
+          }`}
         />
       </svg>
     </motion.div>
