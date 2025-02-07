@@ -48,35 +48,14 @@ const PuzzlePiece = ({
     return () => clearTimeout(timer);
   }, [delay]);
   
-  // Calculate responsive positions based on viewport width
-  const [positions, setPositions] = useState({
-    'top-left': { x: -96, y: -96 },
-    'top-right': { x: 96, y: -96 },
-    'bottom-left': { x: -96, y: 96 },
-    'bottom-right': { x: 96, y: 96 },
+  const baseDistance = Math.min(60, window.innerWidth * 0.04); // 4% of viewport width, max 60px
+  const positions = {
+    'top-left': { x: -baseDistance, y: -baseDistance },
+    'top-right': { x: baseDistance, y: -baseDistance },
+    'bottom-left': { x: -baseDistance, y: baseDistance },
+    'bottom-right': { x: baseDistance, y: baseDistance },
     'center': { x: 0, y: 0 }
-  });
-
-  useEffect(() => {
-    function updatePositions() {
-      // Base the convergence distance on viewport width
-      const baseDistance = Math.min(window.innerWidth * 0.06, 96); // 6% of viewport width, max 96px
-      setPositions({
-        'top-left': { x: -baseDistance, y: -baseDistance },
-        'top-right': { x: baseDistance, y: -baseDistance },
-        'bottom-left': { x: -baseDistance, y: baseDistance },
-        'bottom-right': { x: baseDistance, y: baseDistance },
-        'center': { x: 0, y: 0 }
-      });
-    }
-
-    // Initial calculation
-    updatePositions();
-
-    // Update positions on window resize
-    window.addEventListener('resize', updatePositions);
-    return () => window.removeEventListener('resize', updatePositions);
-  }, []);
+  };
   
   const transitionProps = { duration: 1.5, delay, type: "spring", stiffness: 100, damping: 15 };
   
@@ -99,7 +78,7 @@ const PuzzlePiece = ({
       transition={transitionProps}
       className={`absolute w-24 h-24 puzzle-piece ${isAssembled ? 'assembled piece-fit' : ''}`}
       data-position={position}
-  >
+    >
       <svg
         viewBox="0 0 100 100"
         className="w-full h-full"
@@ -135,10 +114,10 @@ interface PuzzlePieceConfig {
   The corner pieces form the corners of the square and the center piece is in the middle.
 */
 const puzzlePieces: PuzzlePieceConfig[] = [
-  { position: 'top-left', rotation: -45, x: -150, y: -150, finalX: -96, finalY: -96, delay: 0 },
-  { position: 'top-right', rotation: 45, x: 150, y: -150, finalX: 96, finalY: -96, delay: 0.2 },
-  { position: 'bottom-left', rotation: -45, x: -150, y: 150, finalX: -96, finalY: 96, delay: 0.4 },
-  { position: 'bottom-right', rotation: 45, x: 150, y: 150, finalX: 96, finalY: 96, delay: 0.6 },
+  { position: 'top-left', rotation: -45, x: -150, y: -150, finalX: -60, finalY: -60, delay: 0 },
+  { position: 'top-right', rotation: 45, x: 150, y: -150, finalX: 60, finalY: -60, delay: 0.2 },
+  { position: 'bottom-left', rotation: -45, x: -150, y: 150, finalX: -60, finalY: 60, delay: 0.4 },
+  { position: 'bottom-right', rotation: 45, x: 150, y: 150, finalX: 60, finalY: 60, delay: 0.6 },
   { position: 'center', rotation: 0, x: 0, y: 0, finalX: 0, finalY: 0, delay: 0.8 }
 ];
 
@@ -195,13 +174,8 @@ export default function HeroSection(): JSX.Element {
           )}
         </AnimatePresence>
 
-        {/* Puzzle pieces container remains intact; each PuzzlePiece will animate to converge at center if 'converge' is true */}
-        <div className="puzzle-container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          {/* Connector Lines */}
-          <AnimatePresence>
-            {/* (Render connectors if needed; not modified in this version) */}
-          </AnimatePresence>
-
+        {/* Puzzle pieces container with flex centering */}
+        <div className="puzzle-container relative w-full h-full flex items-center justify-center">
           {puzzlePieces.map((piece) => (
             <PuzzlePiece
               key={`puzzle-${piece.position}`}
