@@ -91,7 +91,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           disableTransitionOnChange
         >
           <Header />
-          <main>{children}</main>
+          <main className="pt-40 md:pt-44">{children}</main>
           <Footer />
           <Toaster />
           <ExitIntentPopup />

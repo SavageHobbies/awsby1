@@ -250,9 +250,13 @@ export default function HeroSection(): JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Not All Businesses Can Afford Perfection—
-                <span className="text-gradient-animate">
-                  But Everyone Deserves Progress
+                Your Business Growth
+                <br />
+                <span className="text-gradient-animate block mt-2">
+                  Built One Strategic
+                </span>
+                <span className="text-gradient-animate block mt-2">
+                  Piece at a Time
                 </span>
               </motion.h1>
               
@@ -262,37 +266,60 @@ export default function HeroSection(): JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                BY1.net helps you grow one practical step at a time. Automate what you need, skip what you don't. 
-                Save time. Make more. Run smoother.
+                Stop juggling disconnected tools. We partner with you to identify missing pieces, implement solutions that fit, 
+                and create systems that grow as you do.
               </motion.p>
               
-              <motion.p
-                className="text-xl md:text-2xl font-semibold gradient-text"
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 my-16 max-w-5xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Your Growth, Piece by Piece
-              </motion.p>
+                <div className="flex items-start space-x-3">
+                  <span className="text-green-400 text-2xl">✅</span>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg">Empower Your Team</h3>
+                    <p className="text-slate-200">Solutions that simplify work, not complicate it</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <span className="text-green-400 text-2xl">✅</span>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg">Seamless Growth</h3>
+                    <p className="text-slate-200">Add tools that work together, not against you</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <span className="text-green-400 text-2xl">✅</span>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg">Build Confidence</h3>
+                    <p className="text-slate-200">Progress you can measure, one piece at a time</p>
+                  </div>
+                </div>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+                className="flex flex-col items-center space-y-6"
               >
-                <Button
-                  size="lg"
-                  className="btn-primary btn-glow text-white text-lg px-8 font-semibold flex items-center shadow-md hover:shadow-lg transition duration-300"
-                >
-                  Build Your First Step →
-                </Button>
-                <Button
-                  size="lg"
-                  className="btn-secondary text-white text-lg px-8 font-semibold shadow-md hover:shadow-lg"
-                >
-                  See How It Works
-                </Button>
+                <h3 className="text-xl md:text-2xl font-semibold text-white">Let's Build Your Foundation</h3>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    size="lg"
+                    className="btn-primary btn-glow text-white text-lg px-8 font-semibold flex items-center shadow-md hover:shadow-lg transition-300"
+                  >
+                    BOOK A STRATEGY CALL →
+                  </Button>
+                  <Button
+                    size="lg"
+                    className="btn-secondary text-white text-lg px-8 font-semibold shadow-md hover:shadow-lg transition-300"
+                  >
+                    SEE HOW IT WORKS
+                  </Button>
+                </div>
               </motion.div>
             </motion.div>
           )}

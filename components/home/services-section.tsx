@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import Link from 'next/link';
 
 interface ServiceCardProps {
   title: string;
@@ -10,9 +11,10 @@ interface ServiceCardProps {
   services: string[];
   cta: string;
   delay: number;
+  link: string;
 }
 
-const ServiceCard = ({ title, description, services, cta, delay }: ServiceCardProps) => (
+const ServiceCard = ({ title, description, services, cta, delay, link }: ServiceCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -24,14 +26,14 @@ const ServiceCard = ({ title, description, services, cta, delay }: ServiceCardPr
       <motion.div
         initial={{ scale: 0.95 }}
         whileHover={{ scale: 1 }}
-        className="p-6 h-full flex flex-col relative z-10"
+        className="p-6 h-full flex flex-col justify-between relative z-10"
       >
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         <h3 className="text-2xl font-bold text-gradient-animate mb-4 relative z-10">{title}</h3>
         <p className="text-slate-600 dark:text-slate-300 mb-6 relative z-10">{description}</p>
-        <ul className="space-y-3 mb-8 flex-grow relative z-10">
+        <ul className="space-y-3 mb-8 min-h-[160px] relative z-10">
           {services.map((service) => (
             <motion.li
               key={`${title}-${service}`}
@@ -59,8 +61,10 @@ const ServiceCard = ({ title, description, services, cta, delay }: ServiceCardPr
             </motion.li>
           ))}
         </ul>
-        <Button className="btn-primary btn-glow text-white font-semibold relative z-10">
-          <span className="relative z-10">{cta}</span>
+        <Button asChild className="btn-primary btn-glow text-white font-semibold relative z-10">
+          <Link href={link}>
+            <span className="relative z-10">{cta}</span>
+          </Link>
         </Button>
       </motion.div>
     </Card>
@@ -79,7 +83,8 @@ export default function ServicesSection() {
         "Simple workflow automation"
       ],
       cta: "Start Here—No Commitments",
-      delay: 0
+      delay: 0,
+      link: "/services/web-development"
     },
     {
       title: "Grow Smart",
@@ -91,7 +96,8 @@ export default function ServicesSection() {
         "Marketing automation"
       ],
       cta: "Expand Your Toolkit",
-      delay: 0.2
+      delay: 0.2,
+      link: "/services/ai-implementation"
     },
     {
       title: "Thrive Fully",
@@ -103,7 +109,8 @@ export default function ServicesSection() {
         "Enterprise automation"
       ],
       cta: "Talk to Us",
-      delay: 0.4
+      delay: 0.4,
+      link: "/contact"
     }
   ];
 
