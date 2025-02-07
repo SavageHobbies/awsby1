@@ -48,13 +48,35 @@ const PuzzlePiece = ({
     return () => clearTimeout(timer);
   }, [delay]);
   
-  const convergePositions: Record<PuzzlePosition, { x: number; y: number }> = {
+  // Calculate responsive positions based on viewport width
+  const [positions, setPositions] = useState({
     'top-left': { x: -96, y: -96 },
     'top-right': { x: 96, y: -96 },
     'bottom-left': { x: -96, y: 96 },
     'bottom-right': { x: 96, y: 96 },
     'center': { x: 0, y: 0 }
-  };
+  });
+
+  useEffect(() => {
+    function updatePositions() {
+      // Base the convergence distance on viewport width
+      const baseDistance = Math.min(window.innerWidth * 0.06, 96); // 6% of viewport width, max 96px
+      setPositions({
+        'top-left': { x: -baseDistance, y: -baseDistance },
+        'top-right': { x: baseDistance, y: -baseDistance },
+        'bottom-left': { x: -baseDistance, y: baseDistance },
+        'bottom-right': { x: baseDistance, y: baseDistance },
+        'center': { x: 0, y: 0 }
+      });
+    }
+
+    // Initial calculation
+    updatePositions();
+
+    // Update positions on window resize
+    window.addEventListener('resize', updatePositions);
+    return () => window.removeEventListener('resize', updatePositions);
+  }, []);
   
   const transitionProps = { duration: 1.5, delay, type: "spring", stiffness: 100, damping: 15 };
   
@@ -70,8 +92,8 @@ const PuzzlePiece = ({
       animate={{
         opacity: converge ? 0 : 1,
         scale: 1,
-        x: converge ? convergePositions[position].x : finalX,
-        y: converge ? convergePositions[position].y : finalY,
+        x: converge ? positions[position].x : finalX,
+        y: converge ? positions[position].y : finalY,
         rotate: 0
       }}
       transition={transitionProps}
