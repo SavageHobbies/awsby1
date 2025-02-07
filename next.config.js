@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  // Disabling features that might cause permission issues during development
+  experimental: {
+    optimizeCss: false
+  },
+  swcMinify: false,
   // Commenting out redirects for local development
   // async redirects() {
   //   return [
