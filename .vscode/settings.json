@@ -1,0 +1,17 @@
+{
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "path": "cmd.exe",
+            "args": []
+        }
+    },
+    "remote.SSH.defaultExtensions": [],
+    "remote.SSH.remotePlatform": null,
+    "remote.SSH.showLoginTerminal": false,
+    "remote.SSH.useLocalServer": false,
+    "remote.extensionKind": {
+        "pub.name": [ "ui" ]
+    }
+}
