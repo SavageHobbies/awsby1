@@ -34,6 +34,9 @@ const config: Config = {
           foreground: 'hsl(var(--muted-foreground))',
         },
       },
+      fontFamily: {
+        'custom': ['Poppins', 'sans-serif'], // Add custom font family
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

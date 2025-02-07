@@ -48,7 +48,21 @@ const PuzzlePiece = ({
     return () => clearTimeout(timer);
   }, [delay]);
   
-  const baseDistance = Math.min(60, window.innerWidth * 0.04); // 4% of viewport width, max 60px
+  const [baseDistance, setBaseDistance] = useState(60);
+
+  useEffect(() => {
+    const updateBaseDistance = () => {
+      setBaseDistance(Math.min(60, window.innerWidth * 0.04)); // 4% of viewport width, max 60px
+    };
+
+    updateBaseDistance(); // Initial calculation
+    window.addEventListener('resize', updateBaseDistance);
+    
+    return () => {
+      window.removeEventListener('resize', updateBaseDistance);
+    };
+  }, []);
+
   const positions = {
     'top-left': { x: -baseDistance, y: -baseDistance },
     'top-right': { x: baseDistance, y: -baseDistance },

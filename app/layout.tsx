@@ -10,7 +10,6 @@ import GoogleAnalytics from '@/components/analytics/google-analytics';
 import Hotjar from '@/components/analytics/hotjar';
 import CrispChat from '@/components/chat/crisp';
 import ExitIntentPopup from '@/components/marketing/exit-intent-popup';
-import StructuredData from '@/components/seo/structured-data.tsx';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -65,8 +64,8 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   other: {
-    'theme-color': '#000000',
-  },
+    'theme-color': '#000000'
+  }
 };
 
 interface RootLayoutProps {
@@ -74,19 +73,6 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'BY1.net',
-    url: 'https://by1.net',
-    logo: 'https://by1.net/logo.png',
-    description: 'Enterprise AI & Automation Solutions',
-    sameAs: [
-      'https://twitter.com/by1net',
-      'https://linkedin.com/company/by1net',
-    ],
-  };
-
   return (
     <html lang="en">
       <head>
@@ -96,7 +82,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* <link rel="manifest" href="/manifest.webmanifest" /> */}
-        <StructuredData data={jsonLd} />
       </head>
       <body className={inter.className}>
         <ThemeProvider
@@ -128,6 +113,20 @@ export default function RootLayout({ children }: RootLayoutProps) {
               src={`/scripts/crisp.js?website_id=${process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID}`}
             />
           )}
+          <Script id="json-ld" type="application/ld+json" strategy="worker">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'BY1.net',
+              url: 'https://by1.net',
+              logo: 'https://by1.net/logo.png',
+              description: 'Enterprise AI & Automation Solutions',
+              sameAs: [
+                'https://twitter.com/by1net',
+                'https://linkedin.com/company/by1net'
+              ]
+            })}
+          </Script>
         </ThemeProvider>
       </body>
     </html>
