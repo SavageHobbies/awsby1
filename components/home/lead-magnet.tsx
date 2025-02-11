@@ -78,12 +78,14 @@ export default function LeadMagnet() {
               required
               className="flex-grow"
             />
-            <Button
-              type="submit"
-              className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-white"
-            >
-              Get Free Guide
-            </Button>
+            <div className="w-full sm:w-auto">
+              <Button
+                type="submit"
+                size="lg"
+              >
+                Get Free Guide
+              </Button>
+            </div>
           </motion.form>
         </div>
       </div>

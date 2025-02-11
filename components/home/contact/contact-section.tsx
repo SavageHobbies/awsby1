@@ -179,11 +179,11 @@ export default function ContactSection() {
                   </span>
                 </div>
 
-                <Button 
-                  type="submit" 
-                  className="w-full bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-white"
-                  disabled={!privacyAccepted}
-                >
+<Button 
+  type="submit" 
+  size="lg"
+  disabled={!privacyAccepted}
+>
                   Send Message
                 </Button>
               </div>

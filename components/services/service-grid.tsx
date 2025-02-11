@@ -16,7 +16,7 @@ export function ServiceGrid() {
             title={service.title}
             description={service.description}
             features={service.features}
-            href={`/services/${service.id}`}
+            href={service.id === 'web-hosting' ? '/webhosting' : `/services/${service.id}`}
             icon={service.icon}
           />
         </motion.div>

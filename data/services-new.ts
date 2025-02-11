@@ -25,6 +25,7 @@ export const serviceCategories = [
       'Website Design & Development',
       'Landing Page Creation',
       'Sales Funnel Development',
+      'Web Hosting Solutions',
       'Mobile-Responsive Design',
       'E-commerce Solutions',
       'Custom Web Applications'

@@ -307,18 +307,12 @@ export default function HeroSection(): JSX.Element {
               >
                 <h3 className="text-xl md:text-2xl font-semibold text-white">Let's Build Your Foundation</h3>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="btn-primary btn-glow text-white text-lg px-8 font-semibold flex items-center shadow-md hover:shadow-lg transition-300"
-                  >
-                    BOOK A STRATEGY CALL →
-                  </Button>
-                  <Button
-                    size="lg"
-                    className="btn-secondary text-white text-lg px-8 font-semibold shadow-md hover:shadow-lg transition-300"
-                  >
-                    SEE HOW IT WORKS
-                  </Button>
+<Button size="lg" className="text-lg px-8 font-semibold">
+  BOOK A STRATEGY CALL →
+</Button>
+<Button size="lg" variant="secondary" className="text-lg px-8 font-semibold">
+  SEE HOW IT WORKS
+</Button>
                 </div>
               </motion.div>
             </motion.div>

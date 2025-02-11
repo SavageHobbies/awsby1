@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Database,
   Laptop,
+  Server,
 } from 'lucide-react';
 
 export const services = [
@@ -276,6 +277,28 @@ export const services = [
     caseStudy: {
       title: 'Manufacturer Saves 40% on IT Costs',
       description: 'Through strategic IT infrastructure optimization',
+    },
+  },
+  {
+    id: 'web-hosting',
+    title: 'Web Hosting',
+    description: 'Professional website hosting with comprehensive maintenance and support',
+    icon: Server,
+    features: [
+      'Mobile-Responsive Design',
+      'SEO Optimization',
+      'Content Management',
+      'Regular Updates & Maintenance',
+      'Technical Support',
+    ],
+    benefits: [
+      'Professional online presence',
+      'Reliable website performance',
+      'Ongoing maintenance and updates',
+    ],
+    caseStudy: {
+      title: 'Business Growth Through Professional Web Presence',
+      description: 'Helping businesses establish and maintain their digital presence',
     },
   },
 ];

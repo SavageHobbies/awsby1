@@ -61,7 +61,7 @@ const ServiceCard = ({ title, description, services, cta, delay, link }: Service
             </motion.li>
           ))}
         </ul>
-        <Button asChild className="btn-primary btn-glow text-white font-semibold relative z-10">
+<Button asChild size="lg" className="font-semibold relative z-10">
           <Link href={link}>
             <span className="relative z-10">{cta}</span>
           </Link>
@@ -147,7 +147,9 @@ export default function ServicesSection() {
             Start Small. Grow Smart.
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Choose your pace. Add capabilities as you grow. No pressure to buy more than you need.
+            Choose your pace. Add capabilities as you grow.
+            <br />
+            No pressure to buy more than you need.
           </p>
         </motion.div>
 
