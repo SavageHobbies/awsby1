@@ -1,15 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle2, ArrowLeft, XCircle } from 'lucide-react';
 
-export default function PaymentSuccessPage() {
-  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const paymentIntentId = searchParams.get('payment_intent');
+  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
 
   useEffect(() => {
     const checkPaymentStatus = async () => {
@@ -73,5 +73,20 @@ export default function PaymentSuccessPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-[80vh] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary mx-auto" />
+          <p className="mt-4 text-slate-300">Loading payment status...</p>
+        </div>
+      </div>
+    }>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }
