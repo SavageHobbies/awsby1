@@ -8,7 +8,7 @@ if (!stripeSecretKey) {
 }
 
 const stripe = new Stripe(stripeSecretKey, {
-  apiVersion: '2025-01-27.acacia',
+  apiVersion: '2023-10-16',
 });
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
