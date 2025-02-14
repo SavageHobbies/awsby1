@@ -1,7 +1,7 @@
 import HeroSection from '@/components/home/hero-section';
 import ServicesSection from '@/components/home/services-section';
 import SocialProof from '@/components/home/social-proof';
-import PricingSection from '@/components/home/pricing-section';
+import PricingSection from '@/components/pricing/pricing-section';
 
 export const metadata = {
   title: 'BY1.net - Your Growth, Piece by Piece',

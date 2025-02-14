@@ -2,8 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
-import { ThemeProvider } from '@/components/theme-provider';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/toast';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import GoogleAnalytics from '@/components/analytics/google-analytics';
@@ -84,17 +83,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* <link rel="manifest" href="/manifest.webmanifest" /> */}
       </head>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <>
           <Header />
           <main className="pt-40 md:pt-44">{children}</main>
           <Footer />
           <Toaster />
           <ExitIntentPopup />
+        </>
           {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
             <Script
               strategy="afterInteractive"
@@ -127,7 +122,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               ]
             })}
           </Script>
-        </ThemeProvider>
       </body>
     </html>
   );
